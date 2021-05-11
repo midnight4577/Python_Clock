@@ -84,9 +84,10 @@ def getWeather():
 def getIcon():
     print("nothing here")
 
-colour = (0, 255, 0)
+brightness = 105 #min 105 max 255
+textColour = (0, brightness, 0)
 backgroundColour = (0, 0, 0)
-weatherColour = (150, 150, 255)
+weatherColour = (brightness-105, brightness-105, brightness)
 weatherTimer = 0
 weather = getWeather()
 frameRate = 30
@@ -103,14 +104,26 @@ while run:
 
         if event.type == pygame.KEYDOWN:
             run = False
+    if int(time.strftime("%H", time.localtime())) >= 21 and brightness != 105:
+        brightness = 105 #min 105 max 255
+        textColour = (0, brightness, 0)
+        backgroundColour = (0, 0, 0)
+        weatherColour = (brightness-105, brightness-105, brightness)
+    elif int(time.strftime("%H", time.localtime())) < 21 and brightness != 255:
+        brightness = 255 #min 105 max 255
+        textColour = (0, brightness, 0)
+        backgroundColour = (0, 0, 0)
+        weatherColour = (brightness-105, brightness-105, brightness)
 
     clock.tick(frameRate)
     win.fill(backgroundColour)
     theTime = time.strftime("%H:%M:%S", time.localtime())
-    timeText = font.render(str(theTime), True,colour)
+    timeText = font.render(str(theTime), True,textColour)
+
+
 
     dateStr = time.strftime("%a, %d %b %Y", time.localtime())
-    dateText = subFont.render(str(dateStr), True,colour)
+    dateText = subFont.render(str(dateStr), True,textColour)
 
     if weatherTimer >= 60*frameRate:
         weather = getWeather()
@@ -119,16 +132,15 @@ while run:
         weatherTimer += 1
 
     if weather:
-        tempText = weatherFont.render(str(round(weather[0]-273.15, 2))+' Deg', False, weatherColour)
+        tempText = weatherFont.render(str(round(weather[0]-273.15, 2))+' Degrees', False, weatherColour)
         presText = weatherFont.render(str(weather[1])+' hPa', False, weatherColour)
-        humdText = weatherFont.render(str(weather[2])+' Perc', False, weatherColour)
+        humdText = weatherFont.render(str(weather[2])+' Humidity', False, weatherColour)
         descText = weatherFont.render(str(weather[3]), False, weatherColour)
 
         blit_fm(dispWidth/2-150, dispHeight/2+80, tempText)
         blit_fm(dispWidth/2, dispHeight/2+80, presText)
         blit_fm(dispWidth/2+150, dispHeight/2+80, humdText)
         blit_fm(dispWidth/2, dispHeight/2+120, descText)
-
 
     blit_fm(dispWidth/2, dispHeight/2, timeText)
     blit_fm(dispWidth/2, dispHeight/2-100, dateText)
