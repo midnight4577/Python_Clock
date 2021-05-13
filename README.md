@@ -29,7 +29,7 @@ $ python -m pip install json
 io:
 Should already be installed with python
 
-If these don't work check out:https://www.raspberrypi.org/documentation/linux/software/python.md
+If these don't work check out: https://www.raspberrypi.org/documentation/linux/software/python.md
 
 
 Also about half the code is from stack overflow so thank you random humans
