@@ -18,13 +18,13 @@ def blit_fm(x, y, image):
     win.blit(image,(x-width/2,y-height/2))
 
 def getWeather():
-    api_key = "b4297b6a5fa655aaed5e069ebf9a0eb4"
+    api_key = "..."
 
     # base_url variable to store url
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
 
     # Give city name
-    city_name = "Chilliwack, CA"
+    city_name = "..."
 
     # complete_url variable to store
     # complete url address
