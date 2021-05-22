@@ -1,13 +1,13 @@
 import time, pygame, requests, json, io
 
-dispWidth = 480
-dispHeight = 320
+dispWidth = 800
+dispHeight = 480
 
 pygame.init()
 
-font = pygame.font.Font('Excluded.ttf',100)
-subFont = pygame.font.Font('Excluded.ttf',40)
-weatherFont = pygame.font.Font('Excluded.ttf',20)
+font = pygame.font.Font('Excluded.ttf',180)
+subFont = pygame.font.Font('Excluded.ttf',80)
+weatherFont = pygame.font.Font('Excluded.ttf',50)
 
 clock = pygame.time.Clock()
 win = pygame.display.set_mode([dispWidth, dispHeight])#, pygame.FULLSCREEN)
@@ -137,10 +137,10 @@ while run:
         humdText = weatherFont.render(str(weather[2])+' Humidity', False, weatherColour)
         descText = weatherFont.render(str(weather[3]), False, weatherColour)
 
-        blit_fm(dispWidth/2-150, dispHeight/2+80, tempText)
-        blit_fm(dispWidth/2, dispHeight/2+80, presText)
-        blit_fm(dispWidth/2+150, dispHeight/2+80, humdText)
-        blit_fm(dispWidth/2, dispHeight/2+120, descText)
+        blit_fm(dispWidth/2, dispHeight/2+80, tempText)
+        blit_fm(dispWidth/2, dispHeight/2+120, presText)
+        blit_fm(dispWidth/2, dispHeight/2+160, humdText)
+        blit_fm(dispWidth/2, dispHeight/2+200, descText)
 
     blit_fm(dispWidth/2, dispHeight/2, timeText)
     blit_fm(dispWidth/2, dispHeight/2-100, dateText)
