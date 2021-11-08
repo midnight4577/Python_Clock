@@ -31,5 +31,6 @@ Should already be installed with python
 
 If these don't work check out: https://www.raspberrypi.org/documentation/linux/software/python.md
 
+In the python file you need to change lines 21, 27 to include your city and open weather API key ()
 
-Also about half the code is from stack overflow so thank you random humans
+Also about half the code is from stack overflow and other some other opensource sources so thank you to all the people who made their code available to public domain.
